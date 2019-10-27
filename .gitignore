@@ -1,0 +1,11 @@
+release/
+*.exe
+!tools/*.exe
+neogeo.zip
+qsound.zip
+gba_bios.bin
+psxonpsp660.bin
+scph101.bin
+scph5501.bin
+scph7001.bin
+scph1001.bin

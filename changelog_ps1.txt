@@ -1,0 +1,31 @@
+v1.7.3
+- i'm dumb and broke cia creation for pbp, hopefully it's fixed now.
+
+v1.7.2
+- reworked sbi support, it should work with single disc pbp now.
+- removed debug message used to test sbi support (oops).
+
+v1.7.1
+- added chd support.
+- exposed more emulator options.
+- added emulation settings presets.
+- added sbi support (for libcrypt games).
+- show touch buttons is now enabled by default.
+- clean temporary files immediately after using them to reduce free space needed to create large cias.
+- updated 3dstool and makerom.
+- also removed ctrtool (not needed anymore).
+
+v1.7
+- fixed psxonpsp660.bin bios detection.
+- and the hle bios too.
+- adjusted smdh flags to hide the "save backup data" option on the 3ds menu as it isn't supported.
+- "core disk options" was still being displayed when navigating the menu, changed to "change disc".
+- changed "open/close disc tray" to "open/close lid".
+- removed option to set circlepad as dpad.
+- allow remapping controls from the forwarder itself.
+- added touch buttons to compensate for the missing L3/R3 buttons.
+- added optional bottom screen image to show touch buttons.
+- slight adjust to the banner sound.
+
+v1.6
+- initial release
