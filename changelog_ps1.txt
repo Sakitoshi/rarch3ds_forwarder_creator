@@ -1,7 +1,7 @@
 v1.7.4
 - updated pcsx-rearmed core to nightly feb 21 (commit 3eb0739).
 - inform which specific bios is being used if more than 1 is present.
-- indicate specific core version (that way I can update the core indepedently from the forwarder creator).
+- indicate specific core version (that way I can update the core independently from the forwarder creator).
 
 v1.7.3
 - i'm dumb and broke cia creation for pbp, hopefully it's fixed now.
