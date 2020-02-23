@@ -5,8 +5,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #NoTrayIcon
 #SingleInstance off
 
-Version = 1.7.3
 system = ps1
+versionfile := FileOpen("tools\assets_" system "\version", "r")
+coreversion := Format("{:x}",versionfile.ReadUInt())
+versionfile.Close()
+Version = 1.7.4 (%coreversion%)
 bios = psxonpsp660.bin|scph101.bin|scph5501.bin|scph7001.bin|scph1001.bin
 bios_name = PS1 Bios
 system_name = PS1

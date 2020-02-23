@@ -85,6 +85,12 @@ Else If bioszip = bin
     GuiControl,, BiosEdit, %system_name% bios present
     Gui, Font, cGreen
     }
+Else If bioszip contains .bin
+    {
+    GuiControl, MoveDraw, BiosEdit, w152
+    GuiControl,, BiosEdit, %bioszip% bios present
+    Gui, Font, cGreen
+    }
 Else
     {
     If system = ps1
@@ -349,8 +355,18 @@ CheckBiosFile(Zip)
         IfExist gba_bios.bin
             Return, "bin"
     If (Zip = "psxonpsp660.bin|scph101.bin|scph5501.bin|scph7001.bin|scph1001.bin" && system = "ps1")
-        If (FileExist("psxonpsp660.bin") || FileExist("scph101.bin") || FileExist("scph5501.bin") || FileExist("scph7001.bin") || FileExist("scph1001.bin"))
-            Return, "bin"
+        {
+        If FileExist("psxonpsp660.bin")
+            Return, "psxonpsp660.bin"
+        If FileExist("scph101.bin")
+            Return, "scph101.bin"
+        If FileExist("scph5501.bin")
+            Return, "scph5501.bin"
+        If FileExist("scph7001.bin")
+            Return, "scph7001.bin"
+        If FileExist("scph1001.bin")
+            Return, "scph1001.bin"
+        }
     SplitPath, Zip,, SourceFolder
     if ! SourceFolder
         Zip := A_ScriptDir . "\" . Zip

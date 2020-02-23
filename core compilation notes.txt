@@ -1,0 +1,1 @@
+ps1: I changed the memcard2 location to be two directories up (so it ends up located in 'sdmc:/retroarch/forwarders' outside of any game folder). this is the only special change to the core.
