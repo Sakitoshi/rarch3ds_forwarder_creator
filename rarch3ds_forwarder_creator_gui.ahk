@@ -33,6 +33,11 @@ Gui, Add, Text, xm-1 y+16 section, %bios_name%:
 Gui, Add, Edit, ys-3 w102 Wrap -Tabstop ReadOnly cFF7F00 vBiosEdit, checking...
 If system = neogeo
     Gui, Add, Checkbox, ys Disabled vUnibiosCheck, Enable Uni-bios menu
+If system = ps1
+    {
+    Gui, Add, Text, x+58 ys, Core Version:
+    Gui, Add, Edit, ys-3 w50 r1 Wrap -Tabstop ReadOnly vCoreVersionEdit, %coreversion%
+    }
 Gui, Add, Text, xm-1 ym+233 section, Long Name:
 Gui, Add, Text, xm-1 y+16, Short Name:
 Gui, Add, Text, xm-1 y+16, Publisher:

@@ -36,6 +36,8 @@ Gui, core:Add, Checkbox, xp-17 y+2 vSHGTERegs, (Speed Hack) Assume GTE Regs Unne
 Gui, core:Add, Text, xp+17 y+1 r1 vSHGTERegsT, May cause graphical glitches.
 Gui, core:Add, Checkbox, xp-17 y+2 vSHGTEFlags, (Speed Hack) Disable GTE Flags
 Gui, core:Add, Text, xp+17 y+1 r1 vSHGTEFlagsT, Will cause graphical glitches.
+Gui, core:Add, Checkbox, xp-17 y+2 vAsyncCD, Async CD Access
+Gui, core:Add, Text, xp+17 y+1 r1 vAsyncCDT, Can reduce stuttering on devices with slow storage.
 Gui, core:Add, Text, xm+0 ys+36, Quick presets:
 Gui, core:Add, Button, xp-1 y+4 gcorePMaxS, Max Speed
 Gui, core:Add, Button, x+8 gcorePTurbo, Turbo
@@ -50,6 +52,7 @@ GuiControl, core:Font, ShowBiosT
 GuiControl, core:Font, SHSMCT
 GuiControl, core:Font, SHGTERegsT
 GuiControl, core:Font, SHGTEFlagsT
+GuiControl, core:Font, AsyncCDT
 coreoptionsguicreated = 1
 coreoptionsOKpressed = 0
 coreoptionsguiopen:
@@ -80,6 +83,7 @@ GuiControl, core:, UnaiPixSkip, 1
 GuiControl, core:, SHSMC, 1
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 1
+GuiControl, core:, AsyncCD, 1
 Return
 
 corePTurbo:
@@ -96,6 +100,7 @@ GuiControl, core:, UnaiPixSkip, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 1
+GuiControl, core:, AsyncCD, 1
 Return
 
 corePFast:
@@ -112,6 +117,7 @@ GuiControl, core:, UnaiPixSkip, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 0
+GuiControl, core:, AsyncCD, 1
 Return
 
 corePSafe:
@@ -128,6 +134,7 @@ GuiControl, core:, UnaiPixSkip, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
+GuiControl, core:, AsyncCD, 0
 Return
 
 corePQuality:
@@ -144,6 +151,7 @@ GuiControl, core:, UnaiPixSkip, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
+GuiControl, core:, AsyncCD, 0
 Return
 
 coreReset:
@@ -171,6 +179,7 @@ GuiControl, core:, UnaiPixSkip, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
+GuiControl, core:, AsyncCD, 0
 Return
 
 coreOK:
@@ -225,6 +234,8 @@ If SHGTERegs != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_gteregsunneeded = "disabled",pcsx_rearmed_gteregsunneeded = "enabled"
 If SHGTEFlags != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_nogteflags = "disabled",pcsx_rearmed_nogteflags = "enabled"
+If AsyncCD != 0
+    StringReplace, coreoptions, coreoptions,pcsx_rearmed_async_cd = "sync",pcsx_rearmed_async_cd = "async"
 Return
 
 coreGuiEscape:
@@ -257,6 +268,7 @@ If coreoptionsOKpressed = 1
     GuiControl, core:, SHSMC, %SHSMC%
     GuiControl, core:, SHGTERegs, %SHGTERegs%
     GuiControl, core:, SHGTEFlags, %SHGTEFlags%
+    GuiControl, core:, AsyncCD, %AsyncCD%
     }
 Else
     Gosub, coreReset

@@ -1,3 +1,9 @@
+v1.7.5
+- updated pcsx-rearmed core to nightly mar 3 (commit 8fda5dd).
+- added new emulator option to adjust the newly added cd access method option.
+- adjusted retroarch autosave interval to 60 seconds (it was disabled before).
+- moved core version to a edit box for easy visibility.
+
 v1.7.4
 - updated pcsx-rearmed core to nightly feb 21 (commit 3eb0739).
 - inform which specific bios is being used if more than 1 is present.
