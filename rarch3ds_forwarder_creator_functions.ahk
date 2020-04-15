@@ -123,7 +123,10 @@ createbanner(longname,shortname,publisher,banner,sound)
     RunWait, tools\convert.exe -scale 40x40 "%banner%" -size 48x48 tools\assets_%system%\icon_border.png +swap -gravity center -composite tools\banner\icon.png,, Hide
     If ErrorLevel = 1
         FileCopy, tools\assets_%system%\icon_border.png, tools\banner\icon.png, 1
-    RunWait, tools\bannertool.exe makesmdh -s "%shortname%" -l "%longname%" -p "%publisher%" -f visible`,allow3d`,recordusage`,nosavebackups -i tools\banner\icon.png -o tools\exefs\icon.icn,, Hide
+    If system = ps1
+        RunWait, tools\bannertool.exe makesmdh -s "%shortname%" -l "%longname%" -p "%publisher%" -f visible`,allow3d`,recordusage`,nosavebackups`,new3ds -i tools\banner\icon.png -o tools\exefs\icon.icn,, Hide
+    Else
+        RunWait, tools\bannertool.exe makesmdh -s "%shortname%" -l "%longname%" -p "%publisher%" -f visible`,allow3d`,recordusage`,nosavebackups -i tools\banner\icon.png -o tools\exefs\icon.icn,, Hide
     If !FileExist("tools\exefs\icon.icn")
         {
         FileRemoveDir, tools\banner, 1
@@ -181,10 +184,7 @@ buildromfs(bios,rom,rom2="",unibios=0)
     If system != ps1
         FileCopy, %bios%, tools\romfs
     If system = gba
-        {
         FileCopy, %rom%, tools\romfs\rom.gba
-        FileCopy, tools\assets_%system%\game_config.txt, tools\romfs
-        }
     Else If system = ps1
         {
         If coreoptionsOKpressed = 0

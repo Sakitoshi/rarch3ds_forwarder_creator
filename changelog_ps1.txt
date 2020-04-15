@@ -1,3 +1,6 @@
+v1.7.6 - not yet released
+- adjusted smdh flags to make ps1 cia's unable to run on old 3ds (new 3ds exclusive flag).
+
 v1.7.5
 - updated pcsx-rearmed core to nightly mar 3 (commit 8fda5dd).
 - added new emulator option to adjust the newly added cd access method option.
