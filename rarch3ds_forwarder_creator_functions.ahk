@@ -34,6 +34,7 @@ randomuniqueid()
 
 createcodebin(rom)
     {
+    Global ps1seek
     FileCreateDir, tools\exefs
     FileCopy, tools\assets_%system%\code.bin, tools\exefs, 1
     If ErrorLevel > 0
@@ -55,7 +56,7 @@ createcodebin(rom)
         {
         If fileext = pbp
             Return, 1
-        codebin.Seek(0x21e374)
+        codebin.Seek(ps1seek)
         StrPutEx(fileext,fileextraw,"UTF-8")
         codebin.RawWrite(fileextraw,3)
         codebin.Close()
