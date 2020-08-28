@@ -1,1 +1,3 @@
-ps1: I changed the memcard2 location to be two directories up (so it ends up located in 'sdmc:/retroarch/forwarders' outside of any game folder). this is the only special change to the core.
+ps1:
+- file "frontend/libretro.c" line "snprintf(Config.Mcd2, sizeof(Config.Mcd2), "%s/%s", dir, CARD2_FILE);" to "snprintf(Config.Mcd2, sizeof(Config.Mcd2), "%s/../../%s", dir, CARD2_FILE);" to move the second memory card location two folders up.
+- file "libpcsxcore/misc.c" line "memcpy(CdromLabel, CdromId, 9);" to "strncpy(CdromLabel, CdromId, 9);" to compile using devkitarm r45
