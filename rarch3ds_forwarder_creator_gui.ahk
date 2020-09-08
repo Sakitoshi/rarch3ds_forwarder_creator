@@ -16,6 +16,17 @@ IfNotExist tools
 remapguicreated = 0
 coreoptionscreated = 0
 ShowTouch = 1
+DPI_Mult := A_ScreenDPI / 96
+Window_W := 358 * DPI_Mult
+Window_H := 355 * DPI_Mult
+Banner_X := Ceil(6 * DPI_Mult)
+Banner_Y := Ceil(4 * DPI_Mult)
+Banner_W := Ceil(256 * DPI_Mult)
+Banner_H := Ceil(128 * DPI_Mult)
+Icon_X := Ceil(270 * DPI_Mult)
+Icon_Y := Ceil(84 * DPI_Mult)
+Icon_WH := Ceil(48 * DPI_Mult)
+
 Gui, Add, Picture, xm+6 ym+4 w256 h128 section, tools\assets_%system%\banner_border.png
 If remapping = 1
     Gui, Add, Button, x+7 ym+3 w50 h50 gremapgui, Remap Buttons
@@ -45,9 +56,9 @@ Gui, Add, Edit, ys-3 w270 Limit256 vLongNameEdit, %system_name% Virtual Console
 Gui, Add, Edit, xp y+8 w270 Limit128 vShortNameEdit, %system_name% VC
 Gui, Add, Edit, xp y+8 w270 Limit128 vPublisherEdit, %publisher_name%
 Gui, Add, Button, xm-1 y+9 w340 gBuildCia, Build Cia
-Gui, +Hwndmgui
+Gui, -DPIScale +Hwndmgui
 SetTimer, WatchEdit, 10
-Gui, Show, w358 h355, %Title% %Version%
+Gui, Show, w%Window_W% h%Window_H%, %Title% %Version%
 
 bioszip := CheckBiosFile(bios)
 If bioszip = neonormalbios
@@ -132,9 +143,9 @@ RunWait, tools\convert.exe -scale %banner_size%! "%bannerimage%" -size 256x128 t
 RunWait, tools\convert.exe -scale 40x40 "%bannerimage%" -size 48x48 tools\assets_%system%\icon_border.png +swap -gravity center -composite %iconimageprev%,, Hide
 If BannerPreview =
     {
-    Gui, Add, Picture, xm+6 ym+4 vBannerPreview, %bannerimageprev%
+    Gui, Add, Picture, xm%Banner_X% ym%Banner_Y% w%Banner_W% h%Banner_H% vBannerPreview, %bannerimageprev%
     GuiControl,, BannerPreview, %bannerimageprev%
-    Gui, Add, Picture, xm+270 ym+84 vIconPreview, %iconimageprev%
+    Gui, Add, Picture, xm%Icon_X% ym%Icon_Y% w%Icon_WH% h%Icon_WH% vIconPreview, %iconimageprev%
     GuiControl,, IconPreview, %iconimageprev%
     }
 Else
