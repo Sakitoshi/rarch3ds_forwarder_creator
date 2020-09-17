@@ -30,6 +30,7 @@ Gui, core:Add, Checkbox, y+12 Checked vUnaiBlend, (GPU) Enable Blending
 Gui, core:Add, Checkbox, Checked vUnaiLight, (GPU) Enable Lightning
 Gui, core:Add, Checkbox, vUnaiIlace, (GPU) Enable Forced Interlace
 Gui, core:Add, Checkbox, vUnaiPixSkip, (GPU) Enable Pixel Skip
+Gui, core:Add, Checkbox, vUnaiScaleHiRes, (GPU) Enable Hi-Res Downscaling
 Gui, core:Add, Checkbox, y+12 vSHSMC, (Speed Hack) Disable SMC Checks
 Gui, core:Add, Text, xp+17 y+1 r1 vSHSMCT, Will cause crashes when loading`, break memcards.
 Gui, core:Add, Checkbox, xp-17 y+2 vSHGTERegs, (Speed Hack) Assume GTE Regs Unneeded
@@ -80,6 +81,7 @@ GuiControl, core:, UnaiBlend, 0
 GuiControl, core:, UnaiLight, 0
 GuiControl, core:, UnaiIlace, 1
 GuiControl, core:, UnaiPixSkip, 1
+GuiControl, core:, UnaiScaleHiRes, 1
 GuiControl, core:, SHSMC, 1
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 1
@@ -90,13 +92,14 @@ corePTurbo:
 GuiControl, core:, Vsync, 0
 GuiControl, core:ChooseString, Frameskip, 0
 GuiControl, core:, Dither, 0
-GuiControl, core:, PSXClock, 32
+GuiControl, core:, PSXClock, 34
 GuiControl, core:, Audio, 1
-GuiControl, core:ChooseString, SoundInter, gaussian
+GuiControl, core:ChooseString, SoundInter, simple
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 0
 GuiControl, core:, UnaiIlace, 0
 GuiControl, core:, UnaiPixSkip, 0
+GuiControl, core:, UnaiScaleHiRes, 1
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 1
@@ -107,13 +110,14 @@ corePFast:
 GuiControl, core:, Vsync, 0
 GuiControl, core:ChooseString, Frameskip, 0
 GuiControl, core:, Dither, 0
-GuiControl, core:, PSXClock, 34
+GuiControl, core:, PSXClock, 37
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
 GuiControl, core:, UnaiPixSkip, 0
+GuiControl, core:, UnaiScaleHiRes, 1
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 1
 GuiControl, core:, SHGTEFlags, 0
@@ -124,13 +128,14 @@ corePSafe:
 GuiControl, core:, Vsync, 0
 GuiControl, core:ChooseString, Frameskip, 0
 GuiControl, core:, Dither, 0
-GuiControl, core:, PSXClock, 37
+GuiControl, core:, PSXClock, 40
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
 GuiControl, core:, UnaiPixSkip, 0
+GuiControl, core:, UnaiScaleHiRes, 1
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
@@ -141,13 +146,14 @@ corePQuality:
 GuiControl, core:, Vsync, 1
 GuiControl, core:ChooseString, Frameskip, 0
 GuiControl, core:, Dither, 1
-GuiControl, core:, PSXClock, 40
+GuiControl, core:, PSXClock, 47
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
 GuiControl, core:, UnaiPixSkip, 0
+GuiControl, core:, UnaiScaleHiRes, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
@@ -164,7 +170,7 @@ GuiControl, core:ChooseString, Pad1, standard
 GuiControl, core:, ShowTouch, 1
 GuiControl, core:ChooseString, NegDZ, 0
 GuiControl, core:ChooseString, NegResp, linear
-GuiControl, core:, Dither, 1
+GuiControl, core:, Dither, 0
 GuiControl, core:, PSXClock, 50
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
@@ -176,6 +182,7 @@ GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
 GuiControl, core:, UnaiPixSkip, 0
+GuiControl, core:, UnaiScaleHiRes, 0
 GuiControl, core:, SHSMC, 0
 GuiControl, core:, SHGTERegs, 0
 GuiControl, core:, SHGTEFlags, 0
@@ -228,6 +235,8 @@ If UnaiIlace != 0
     StringReplace, coreoptions, coreoptions, pcsx_rearmed_gpu_unai_ilace_force = "disabled", pcsx_rearmed_gpu_unai_ilace_force = "enabled"
 If UnaiPixSkip != 0
     StringReplace, coreoptions, coreoptions, pcsx_rearmed_gpu_unai_pixel_skip = "disabled", pcsx_rearmed_gpu_unai_pixel_skip = "enabled"
+If UnaiScaleHiRes != 0
+    StringReplace, coreoptions, coreoptions, pcsx_rearmed_gpu_unai_scale_hires = "disabled", pcsx_rearmed_gpu_unai_scale_hires = "enabled"
 If SHSMC != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_nosmccheck = "disabled",pcsx_rearmed_nosmccheck = "enabled"
 If SHGTERegs != 0

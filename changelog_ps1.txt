@@ -1,3 +1,11 @@
+v1.7.7
+- updated pcsx-rearmed core to nightly sep 10 (commit 2791420).
+- added the new core setting "hi-res downscaling" to the emulator options menu.
+- adjusted presets to be less aggressive based on the optimization the core has received.
+- adjusted retroarch settings to use core aspect ratio.
+- fixed strange behavior of the banner preview if windows dpi settings wasn't 100%.
+- changed autohotkey script compilation to 64bit (32bit systems were never supported to begin with because makerom.exe is 64bit only).
+
 v1.7.6
 - adjusted smdh flags to make ps1 cia's unable to run on old 3ds (new 3ds exclusive flag).
 - fixed chd creation
