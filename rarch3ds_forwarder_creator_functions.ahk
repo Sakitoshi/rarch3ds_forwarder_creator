@@ -182,7 +182,7 @@ buildromfs(bios,rom,rom2="",unibios=0)
             FileAppend, %coreoptions%, tools\romfs\retroarch-core-options.cfg, UTF-8
             }
         }
-    Else
+    Else If system != ps1
         FileCopy, tools\assets_%system%\retroarch-core-options.cfg, tools\romfs\retroarch-core-options.cfg
     If system != ps1
         FileCopy, %bios%, tools\romfs

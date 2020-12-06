@@ -14,7 +14,7 @@ Gui, core:Add, Text, , NegCon Twist Deadzone (Percent)
 Gui, core:Add, DropDownList, vNegDZ, 0||5|10|15|20|25|30|
 Gui, core:Add, Text, , NegCon Twist Response
 Gui, core:Add, DropDownList, vNegResp, linear||quadratic|cubic|
-Gui, core:Add, Checkbox, y+12 Checked vDither, Enable Dithering
+Gui, core:Add, Checkbox, y+12 vDither, Enable Dithering
 Gui, core:Add, Text, y+12, PSX CPU Clock
 Gui, core:Add, Edit, w60 vPSXClockText gClockRange
 Gui, core:Add, UpDown, Section Range30-100 vPSXClock, 50
@@ -219,8 +219,8 @@ If NegDZ != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_negcon_deadzone = "0",pcsx_rearmed_negcon_deadzone = "%NegDZ%"
 If NegResp != linear
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_negcon_response = "0",pcsx_rearmed_negcon_response = "%NegResp%"
-If Dither != 1
-    StringReplace, coreoptions, coreoptions,pcsx_rearmed_dithering = "enabled",pcsx_rearmed_dithering = "disabled"
+If Dither != 0
+    StringReplace, coreoptions, coreoptions,pcsx_rearmed_dithering = "disabled",pcsx_rearmed_dithering = "enabled"
 If PSXClock != 50
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_psxclock = "50",pcsx_rearmed_psxclock = "%PSXClock%"
 If Audio != 1
@@ -280,6 +280,7 @@ If coreoptionsOKpressed = 1
     GuiControl, core:, FixDiablo, %FixDiablo%
     GuiControl, core:, FixPE2VH2, %FixPE2VH2%
     GuiControl, core:, FixInu, %FixInu%
+    GuiControl, core:, ThreadRend, %ThreadRend%
     GuiControl, core:, UnaiBlend, %UnaiBlend%
     GuiControl, core:, UnaiLight, %UnaiLight%
     GuiControl, core:, UnaiIlace, %UnaiIlace%
