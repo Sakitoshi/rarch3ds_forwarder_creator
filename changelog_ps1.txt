@@ -1,3 +1,7 @@
+v1.7.8
+- updated pcsx-rearmed core to nightly nov 27 (commit 4bc5e35).
+- added new core setting "threaded rendering" to the emulator options menu.
+
 v1.7.7
 - updated pcsx-rearmed core to nightly sep 10 (commit 2791420).
 - added the new core setting "hi-res downscaling" to the emulator options menu.

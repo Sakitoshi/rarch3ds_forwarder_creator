@@ -16,6 +16,7 @@ rom_ext = gba
 sound = tools\assets_%system%\gba.wav
 banner_size = 192x128
 remapping = 1
+showcoreoptions = 0
 #Include rarch3ds_forwarder_creator_gui.ahk
 #Include rarch3ds_forwarder_creator_functions.ahk
 checkromdependency()

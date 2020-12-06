@@ -174,12 +174,14 @@ buildromfs(bios,rom,rom2="",unibios=0)
     global romdir
 
     If system = neogeo
+	    {
         If unibios = 1
             {
             FileRead, coreoptions, tools\assets_%system%\retroarch-core-options.cfg
             StringReplace, coreoptions, coreoptions,fba-unibios = "disabled",fba-unibios = "enabled"
             FileAppend, %coreoptions%, tools\romfs\retroarch-core-options.cfg, UTF-8
             }
+        }
     Else
         FileCopy, tools\assets_%system%\retroarch-core-options.cfg, tools\romfs\retroarch-core-options.cfg
     If system != ps1

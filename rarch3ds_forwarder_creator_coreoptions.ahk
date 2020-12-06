@@ -26,7 +26,8 @@ Gui, core:Add, Text, xp+17 y+1 r1 vShowBiosT, Breaks some games.
 Gui, core:Add, Checkbox, xp-17 y+3 vFixDiablo, Diablo Music Fix
 Gui, core:Add, Checkbox, vFixPE2VH2, Parasite Eve 2/Vandal Hearts 1/2 Fix
 Gui, core:Add, Checkbox, vFixInu, Inuyasha Sengoku Battle Fix
-Gui, core:Add, Checkbox, y+12 Checked vUnaiBlend, (GPU) Enable Blending
+Gui, core:Add, Checkbox, y+12 Checked vThreadRend, Threaded Rendering
+Gui, core:Add, Checkbox, Checked vUnaiBlend, (GPU) Enable Blending
 Gui, core:Add, Checkbox, Checked vUnaiLight, (GPU) Enable Lightning
 Gui, core:Add, Checkbox, vUnaiIlace, (GPU) Enable Forced Interlace
 Gui, core:Add, Checkbox, vUnaiPixSkip, (GPU) Enable Pixel Skip
@@ -39,7 +40,8 @@ Gui, core:Add, Checkbox, xp-17 y+2 vSHGTEFlags, (Speed Hack) Disable GTE Flags
 Gui, core:Add, Text, xp+17 y+1 r1 vSHGTEFlagsT, Will cause graphical glitches.
 Gui, core:Add, Checkbox, xp-17 y+2 vAsyncCD, Async CD Access
 Gui, core:Add, Text, xp+17 y+1 r1 vAsyncCDT, Can reduce stuttering on devices with slow storage.
-Gui, core:Add, Text, xm+0 ys+36, Quick presets:
+Gui, core:Add, Text, xm+0, ;empty text for spacing
+Gui, core:Add, Text, xm+0 yp+10, Quick presets:
 Gui, core:Add, Button, xp-1 y+4 gcorePMaxS, Max Speed
 Gui, core:Add, Button, x+8 gcorePTurbo, Turbo
 Gui, core:Add, Button, x+8 gcorePFast, Fast
@@ -77,6 +79,7 @@ GuiControl, core:, Dither, 0
 GuiControl, core:, PSXClock, 30
 GuiControl, core:, Audio, 0
 GuiControl, core:ChooseString, SoundInter, off
+GuiControl, core:, ThreadRend, 1
 GuiControl, core:, UnaiBlend, 0
 GuiControl, core:, UnaiLight, 0
 GuiControl, core:, UnaiIlace, 1
@@ -95,6 +98,7 @@ GuiControl, core:, Dither, 0
 GuiControl, core:, PSXClock, 34
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, simple
+GuiControl, core:, ThreadRend, 1
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 0
 GuiControl, core:, UnaiIlace, 0
@@ -113,6 +117,7 @@ GuiControl, core:, Dither, 0
 GuiControl, core:, PSXClock, 37
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
+GuiControl, core:, ThreadRend, 1
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
@@ -131,6 +136,7 @@ GuiControl, core:, Dither, 0
 GuiControl, core:, PSXClock, 40
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
+GuiControl, core:, ThreadRend, 1
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
@@ -149,6 +155,7 @@ GuiControl, core:, Dither, 1
 GuiControl, core:, PSXClock, 47
 GuiControl, core:, Audio, 1
 GuiControl, core:ChooseString, SoundInter, gaussian
+GuiControl, core:, ThreadRend, 0
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
@@ -178,6 +185,7 @@ GuiControl, core:, ShowBios, 0
 GuiControl, core:, FixDiablo, 0
 GuiControl, core:, FixPE2VH2, 0
 GuiControl, core:, FixInu, 0
+GuiControl, core:, ThreadRend, 1
 GuiControl, core:, UnaiBlend, 1
 GuiControl, core:, UnaiLight, 1
 GuiControl, core:, UnaiIlace, 0
@@ -227,6 +235,8 @@ If FixPE2VH2 != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_pe2fix = "disabled",pcsx_rearmed_pe2fix = "enabled"
 If FixInu != 0
     StringReplace, coreoptions, coreoptions,pcsx_rearmed_inuyasha_fix = "disabled",pcsx_rearmed_inuyasha_fix = "enabled"
+If ThreadRend != 1
+    StringReplace, coreoptions, coreoptions, pcsx_rearmed_gpu_thread_rendering = "enabled", pcsx_rearmed_gpu_thread_rendering = "disabled"
 If UnaiBlend != 1
     StringReplace, coreoptions, coreoptions, pcsx_rearmed_gpu_unai_blending = "enabled", pcsx_rearmed_gpu_unai_blending = "disabled"
 If UnaiLight != 1
