@@ -47,7 +47,7 @@ createcodebin(rom)
     romnamelen := StrLen(rom)
     codebin := FileOpen("tools\exefs\code.bin","a")
     If system = neogeo
-        codebin.Seek(0x1ebadf)
+        codebin.Seek(0x1eb853) ;before was 0x1ebadf
     If system = cps1
         codebin.Seek(0x1d95eb)
     If system = cps2

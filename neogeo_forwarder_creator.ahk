@@ -5,7 +5,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #NoTrayIcon
 #SingleInstance off
 
-Version = 1.5.2D
+Version = 1.6
 system = neogeo
 bios = neogeo.zip
 bios_name = Neo-Geo Bios

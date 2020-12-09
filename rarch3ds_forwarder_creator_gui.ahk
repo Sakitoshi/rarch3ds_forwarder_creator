@@ -393,12 +393,7 @@ CheckBiosFile(Zip)
     FolderItemsObj := FolderObj.Items()
     FileCreateDir, %A_Temp%\bios
     AppObj.Namespace(A_Temp . "\bios").CopyHere(FolderItemsObj, 4|16)
-    IfExist, %A_Temp%\bios\neo-geo.rom
-        {
-        FileRemoveDir, %A_Temp%\bios, 1
-        Return, "neoancientbios"
-        }
-    Else IfExist, %A_Temp%\bios\uni-bios*.rom
+    IfExist, %A_Temp%\bios\uni-bios*.rom
         {
         FileRemoveDir, %A_Temp%\bios, 1
         Return, "neounibios"
@@ -412,6 +407,11 @@ CheckBiosFile(Zip)
         {
         FileRemoveDir, %A_Temp%\bios, 1
         Return, "neooldbios"
+        }
+    Else IfExist, %A_Temp%\bios\neo-geo.rom
+        {
+        FileRemoveDir, %A_Temp%\bios, 1
+        Return, "neoancientbios"
         }
     IfExist, %A_Temp%\bios\000-lo.lo
         {
