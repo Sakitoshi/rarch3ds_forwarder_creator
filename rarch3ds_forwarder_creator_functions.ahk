@@ -47,7 +47,7 @@ createcodebin(rom)
     romnamelen := StrLen(rom)
     codebin := FileOpen("tools\exefs\code.bin","a")
     If system = neogeo
-        codebin.Seek(0x1eb853) ;before was 0x1ebadf
+        codebin.Seek(0x1ec87f)
     If system = cps1
         codebin.Seek(0x1d95eb)
     If system = cps2
@@ -172,15 +172,14 @@ buildromfs(bios,rom,rom2="",unibios=0)
     global ShowTouch
     global romname
     global romdir
-
+MsgBox, % unibios
     If system = neogeo
 	    {
-        If unibios = 1
-            {
+        If coreoptionsOKpressed = 0
             FileRead, coreoptions, tools\assets_%system%\retroarch-core-options.cfg
-            StringReplace, coreoptions, coreoptions,fba-unibios = "disabled",fba-unibios = "enabled"
-            FileAppend, %coreoptions%, tools\romfs\retroarch-core-options.cfg, UTF-8
-            }
+        If unibios != 0
+            StringReplace, coreoptions, coreoptions,fbalpha2012_neogeo_neogeo_mode = "UNIBIOS",fbalpha2012_neogeo_neogeo_mode = "%unibios%"
+        FileAppend, %coreoptions%, tools\romfs\retroarch-core-options.cfg, UTF-8
         }
     Else If system != ps1
         FileCopy, tools\assets_%system%\retroarch-core-options.cfg, tools\romfs\retroarch-core-options.cfg

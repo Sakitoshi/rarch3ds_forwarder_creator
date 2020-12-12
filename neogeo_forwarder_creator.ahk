@@ -15,7 +15,8 @@ publisher_name = SNK
 rom_ext = zip
 sound = tools\assets_%system%\neogeo.wav
 banner_size = 170x128
-remapping = 1
+remapping = 0
+showcoreoptions = 1
 #Include rarch3ds_forwarder_creator_gui.ahk
 #Include rarch3ds_forwarder_creator_functions.ahk
 #Include neogeo_forwarder_creator_db.ahk

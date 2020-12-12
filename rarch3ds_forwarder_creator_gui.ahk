@@ -42,8 +42,8 @@ Gui, Add, Button, xm-1 section gSelectRom, Select Game
 Gui, Add, Text, ys+4 w200 vSelectedRom, None...
 Gui, Add, Text, xm-1 y+16 section, %bios_name%:
 Gui, Add, Edit, ys-3 w102 Wrap -Tabstop ReadOnly cFF7F00 vBiosEdit, checking...
-If system = neogeo
-    Gui, Add, Checkbox, ys Disabled vUnibiosCheck, Enable Uni-bios menu
+;If system = neogeo
+;    Gui, Add, Checkbox, ys Disabled vUnibiosCheck, Enable Uni-bios menu
 If system = ps1
     {
     Gui, Add, Text, x+58 ys, Core Version:
