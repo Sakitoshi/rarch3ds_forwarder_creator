@@ -172,7 +172,7 @@ buildromfs(bios,rom,rom2="",unibios=0)
     global ShowTouch
     global romname
     global romdir
-MsgBox, % unibios
+
     If system = neogeo
 	    {
         If coreoptionsOKpressed = 0
